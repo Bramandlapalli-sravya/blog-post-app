@@ -2,9 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 
+interface Product {
+    id: number;
+    title: string;
+    images: string[];
+    description: string;
+}
+
 export default function Blogs() {
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
 
     const fetchProducts = async () => {
         const response = await fetch('https://dummyjson.com/products?limit=6');
@@ -21,7 +28,7 @@ export default function Blogs() {
             {products.length > 0 ?
                 products.map((product) => {
                     return (
-                        <div className="blog">
+                        <div key={product.id} className="blog">
                             <h3>{product.title}</h3>
                             <img className="blog-img" src={product.images[0]} alt={product.title} />
                             <p>{product.description}</p>

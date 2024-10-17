@@ -2,12 +2,25 @@
 
 import React, { useEffect, useState } from 'react';
 
-export default function Blog({ params }) {
+interface Product {
+    id: number;
+    title: string;
+    images: string[];
+    description: string;
+}
+
+interface BlogParams {
+    params: {
+        title: string;
+    };
+}
+
+export default function Blog({ params }: BlogParams) {
 
     const { title } = params;
     const decodedTitle = decodeURIComponent(title);
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
 
     const fetchProducts = async () => {
         const response = await fetch('https://dummyjson.com/products?limit=6');
@@ -26,9 +39,9 @@ export default function Blog({ params }) {
             {filteredProduct.length > 0 ?
                 filteredProduct.map((product) => {
                     return (
-                        <div className='flex flex-col justify-center items-center'>
+                        <div key={product.id} className='flex flex-col justify-center items-center'>
                             <h3>{product.title}</h3>
-                            <img className="blog-img" src={product.images[0]} alt={product.title}/>
+                            <img className="blog-img" src={product.images[0]} alt={product.title} />
                             <p>{product.description}</p>
                         </div>
                     )
