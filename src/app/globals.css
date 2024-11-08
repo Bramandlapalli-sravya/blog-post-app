@@ -123,6 +123,9 @@ body {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
   top: 28px;
   position: absolute;
   border: 1px solid gray;
@@ -131,6 +134,7 @@ body {
   border-radius: 24px;
   right: 100px;
   width: 480px;
+  height: 400px;
   background: linear-gradient(
     228.4deg,
     rgba(8, 16, 23, 0.27) 0%,

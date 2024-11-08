@@ -8,7 +8,7 @@ import PersonIcon from '../assets/PersonIcon.svg';
 
 export default function HomeContainer() {
     return (
-        <main className={'imageContainer overflow-auto md:overflow-hidden'}>
+        <main className={'imageContainer overflow-auto'}>
             <img src={backgroundImg.src} alt='background-img' className={"backgroundImg"} />
             <h1 className={'heading'}>Premium Chauffeur Service</h1>
             <h2 className={'subHeading'}>Your exclusive and dependable chauffeur service indulgence</h2>
